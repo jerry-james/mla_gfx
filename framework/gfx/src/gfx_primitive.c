@@ -6415,7 +6415,7 @@ GFX_STATUS GFX_BevelGradientDraw(
             case BEVEL_GRADIENT_IDLE:
 
                 color1    = GFX_GradientStartColorGet();
-				color2    = GFX_GradientEndColorGet();
+                color2    = GFX_GradientEndColorGet();
                 direction = GFX_FillStyleGet();
                 doDouble  = 0;
 
