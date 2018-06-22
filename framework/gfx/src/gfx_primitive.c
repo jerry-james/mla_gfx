@@ -3849,7 +3849,7 @@ GFX_STATUS __attribute__((weak)) GFX_TextCharDraw(
         {
             case TC_IDLE:
 
-                status = GFX_STATUS_SUCCESS_BIT;
+                statusBit = GFX_STATUS_SUCCESS_BIT;
                 // check for error conditions
                 // since we cannot predict that the font table is always valid we
                 // cannot allow the program to hang. So intead of returning
