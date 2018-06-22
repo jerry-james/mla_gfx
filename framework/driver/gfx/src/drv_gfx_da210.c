@@ -5721,7 +5721,7 @@ GFX_STATUS GFX_DoubleBufferSynchronize(void)
         temp = GFX_DoubleBufferSyncAreaCountGet();
         while(temp > 0)
         {
-            pArea = GFX_DoubleBufferAreaGet(temp);
+            pArea = GFX_DoubleBufferAreaGet(temp - 1);
 
             left   = pArea->left;
             top    = pArea->top;

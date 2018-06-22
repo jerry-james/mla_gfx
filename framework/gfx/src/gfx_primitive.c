@@ -8369,7 +8369,7 @@ void __attribute__ ((weak)) GFX_DoubleBufferAreaMark(
     else
     {
         // update the count then get the area parameters
-        count = ++(gfxDoubleBufferParam.gfxUnsyncedAreaCount);
+        count = (gfxDoubleBufferParam.gfxUnsyncedAreaCount)++;
 
         gfxDoubleBufferParam.gfxDoubleBufferAreas[count].left   = left;
         gfxDoubleBufferParam.gfxDoubleBufferAreas[count].top    = top;
