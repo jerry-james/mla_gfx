@@ -5,7 +5,7 @@
     Microchip Technology Inc.
 
   File Name:
-    drv_gfx_sh1101a_ssd1303.c
+    drv_gfx_ssd1355_spi.c
 
   Summary:
     Display Driver for use with the Microchip Graphics Library.
