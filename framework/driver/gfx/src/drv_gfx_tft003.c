@@ -674,7 +674,7 @@ uint16_t GFX_PixelArrayPut(
                 // we do this because DRV_GFX_AddressSet() is time consuming
                 if (((z+1) < numPixels) && ((*(pPixel + 1)) != GFX_TransparentColorGet()))
                 {
-                    DRV_GFX_AddressSet(x+z, y);
+                    DRV_GFX_AddressSet(x+z+1, y);
                     // set to memory write command
                     DRV_GFX_PMPWrite(0x2C);
                     DisplaySetData();
