@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f2" displayName="driver" projectFiles="true">
+        <itemPath>../../framework/driver/gfx/drv_gfx_display.h</itemPath>
+        <itemPath>virtual_screen.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="gfx" projectFiles="true">
+        <itemPath>../../framework/gfx/gfx.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_colors.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_colors_x11.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_palette.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_primitive.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_primitive_local.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_types_font.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_types_image.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_types_macros.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_types_palette.h</itemPath>
+        <itemPath>../../framework/gfx/gfx_types_resource.h</itemPath>
+      </logicalFolder>
+      <itemPath>gfx_config.h</itemPath>
+      <itemPath>system_config.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="gfx" projectFiles="true">
+        <itemPath>../../framework/gfx/src/gfx_primitive.c</itemPath>
+        <itemPath>virtual_screen.c</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="tests" projectFiles="true">
+        <itemPath>primitive_tests.c</itemPath>
+      </logicalFolder>
+      <itemPath>main.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <standard>3</standard>
+          <incDir>
+            <pElem>../../framework</pElem>
+            <pElem>.</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>NO_WEAK</Elem>
+          </preprocessorList>
+        </cTool>
+      </compileType>
+      <item path="../../framework/driver/gfx/drv_gfx_display.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_colors.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_colors_x11.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_palette.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_primitive.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_primitive_local.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_font.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_image.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_macros.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_palette.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/src/gfx_primitive.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="gfx_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="primitive_tests.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="system_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="virtual_screen.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="virtual_screen.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <standard>3</standard>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../../framework/driver/gfx/drv_gfx_display.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_colors.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_colors_x11.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_palette.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_primitive.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_primitive_local.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_font.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_image.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_macros.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_palette.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/gfx_types_resource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../framework/gfx/src/gfx_primitive.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="gfx_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="primitive_tests.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="system_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="virtual_screen.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="virtual_screen.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

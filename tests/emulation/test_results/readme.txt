@@ -1,0 +1,1 @@
+This folder should be empty.  This folder is where the tests will generate their results.  Please do not commit files into this folder.

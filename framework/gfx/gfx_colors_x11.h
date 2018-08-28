@@ -170,7 +170,7 @@ please contact mla_licensing@microchip.com
 #define GFX_X11_NAVY                GFX_RGBConvert(0x00, 0x00, 0x80)
 #define GFX_X11_MIDNIGHT_BLUE       GFX_RGBConvert(0x19, 0x19, 0x70)
 /*********************************************************************
- * X11: BLUE COLORS
+ * X11: PURPLE COLORS
  *********************************************************************/
 #define GFX_X11_LAVENDER            GFX_RGBConvert(0xE6, 0xE6, 0xFA)
 #define GFX_X11_THISTLE             GFX_RGBConvert(0xD8, 0xBF, 0xD8)

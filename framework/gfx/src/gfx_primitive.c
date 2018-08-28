@@ -50,6 +50,12 @@ please contact mla_licensing@microchip.com
 #include "gfx/gfx_primitive.h"          
 #include "driver/gfx/drv_gfx_display.h"
 
+#if defined(NO_WEAK)
+#define WEAK 
+#else
+#define WEAK __attribute__((weak))
+#endif
+
 /*DOM-IGNORE-BEGIN*/
 // *****************************************************************************
 // The following are internal variables and macros.
@@ -690,7 +696,7 @@ inline uint16_t __attribute__ ((always_inline)) GFX_TextAreaBottomGet(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__ ((weak)) GFX_AlphaBlendingValueSet(
+GFX_STATUS WEAK GFX_AlphaBlendingValueSet(
                                 uint16_t alpha)
 {
     gfxAlphaValue = alpha;
@@ -712,7 +718,7 @@ GFX_STATUS __attribute__ ((weak)) GFX_AlphaBlendingValueSet(
 
 */
 // *****************************************************************************
-uint16_t __attribute__ ((weak)) GFX_AlphaBlendingValueGet(void)
+uint16_t WEAK GFX_AlphaBlendingValueGet(void)
 {
     return (gfxAlphaValue);
 }
@@ -763,7 +769,7 @@ uint16_t __attribute__ ((weak)) GFX_AlphaBlendingValueGet(void)
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_BarAlphaDraw(
+uint16_t WEAK GFX_BarAlphaDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 uint16_t right,
@@ -946,7 +952,7 @@ uint16_t __attribute__((weak)) GFX_BarAlphaDraw(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_BarDraw(
+GFX_STATUS WEAK GFX_BarDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 uint16_t right,
@@ -1042,7 +1048,7 @@ inline GFX_LINE_STYLE __attribute__ ((always_inline)) GFX_LineStyleGet(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_LineDraw(
+GFX_STATUS WEAK GFX_LineDraw(
                                 uint16_t x1,
                                 uint16_t y1,
                                 uint16_t x2,
@@ -1251,7 +1257,7 @@ GFX_STATUS __attribute__ ((always_inline)) GFX_LinePositionRelativeSet(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_SolidLineDraw(
+GFX_STATUS WEAK GFX_SolidLineDraw(
                                 uint16_t x1,
                                 uint16_t y1,
                                 uint16_t x2,
@@ -1511,7 +1517,7 @@ GFX_STATUS __attribute__((weak)) GFX_SolidLineDraw(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_StyledLineDraw(
+GFX_STATUS WEAK GFX_StyledLineDraw(
                                 uint16_t x1,
                                 uint16_t y1,
                                 uint16_t x2,
@@ -1744,7 +1750,7 @@ GFX_STATUS __attribute__((weak)) GFX_StyledLineDraw(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_PolygonDraw(
+GFX_STATUS WEAK GFX_PolygonDraw(
                                 uint16_t sides,
                                 uint16_t *pPoints)
 {
@@ -2157,7 +2163,7 @@ int16_t __attribute__ ((always_inline)) GFX_TextCursorPositionYGet(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__ ((weak)) GFX_TextCursorPositionSet(
+GFX_STATUS WEAK GFX_TextCursorPositionSet(
                                 int16_t x,
                                 int16_t y)
 {
@@ -2198,7 +2204,7 @@ GFX_STATUS __attribute__ ((weak)) GFX_TextCursorPositionSet(
  
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_PixelArrayPut(
+uint16_t WEAK GFX_PixelArrayPut(
                                 uint16_t x,
                                 uint16_t y,
                                 GFX_COLOR *pPixel,
@@ -2271,7 +2277,7 @@ uint16_t __attribute__((weak)) GFX_PixelArrayPut(
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_PixelArrayGet(
+uint16_t WEAK GFX_PixelArrayGet(
                                 uint16_t x,
                                 uint16_t y,
                                 GFX_COLOR *pPixel,
@@ -2304,7 +2310,7 @@ uint16_t __attribute__((weak)) GFX_PixelArrayGet(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_ScreenClear(void)
+GFX_STATUS WEAK GFX_ScreenClear(void)
 {
 
     GFX_FILL_STYLE fillType;
@@ -2346,7 +2352,7 @@ GFX_STATUS __attribute__((weak)) GFX_ScreenClear(void)
 
 */
 // *****************************************************************************
-void  __attribute__((weak)) GFX_Initialize(void)
+void  WEAK GFX_Initialize(void)
 {
     GFX_Primitive_Initialize();
 }
@@ -2471,7 +2477,7 @@ inline void GFX_Primitive_Initialize(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_BevelDraw(   uint16_t x1, uint16_t y1,
+GFX_STATUS WEAK GFX_BevelDraw(   uint16_t x1, uint16_t y1,
                                                 uint16_t x2, uint16_t y2,
                                                 uint16_t rad)
 {
@@ -3246,7 +3252,7 @@ GFX_STATUS GFX_BevelFillDraw(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2,
 
 */
 // *****************************************************************************
-void __attribute__((weak)) GFX_DRV_FontSet(GFX_RESOURCE_HDR *pFont)
+void WEAK GFX_DRV_FontSet(GFX_RESOURCE_HDR *pFont)
 { }
 
 // *****************************************************************************
@@ -3272,7 +3278,7 @@ void __attribute__((weak)) GFX_DRV_FontSet(GFX_RESOURCE_HDR *pFont)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_DRV_TextCharRender(GFX_XCHAR ch)
+GFX_STATUS WEAK GFX_DRV_TextCharRender(GFX_XCHAR ch)
 {
     return (GFX_STATUS_FAILURE);
 }
@@ -3291,7 +3297,7 @@ GFX_STATUS __attribute__((weak)) GFX_DRV_TextCharRender(GFX_XCHAR ch)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_FontSet(GFX_RESOURCE_HDR *pFont)
+GFX_STATUS WEAK GFX_FontSet(GFX_RESOURCE_HDR *pFont)
 {
     pGfxCurrentFont = pFont;
     GFX_DRV_FontSet (pFont);
@@ -3822,7 +3828,7 @@ GFX_STATUS GFX_TextCharRender(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_TextCharDraw(
+GFX_STATUS WEAK GFX_TextCharDraw(
                                 GFX_XCHAR ch)
 {
 
@@ -4030,7 +4036,7 @@ GFX_STATUS __attribute__((weak)) GFX_TextCharDraw(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_TextStringDraw(
+GFX_STATUS WEAK GFX_TextStringDraw(
                                 uint16_t x,
                                 uint16_t y,
                                 GFX_XCHAR *pString,
@@ -4151,7 +4157,7 @@ GFX_STATUS __attribute__((weak)) GFX_TextStringDraw(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_TextStringBoxDraw(
+GFX_STATUS WEAK GFX_TextStringBoxDraw(
                                 uint16_t x,
                                 uint16_t y,
                                 uint16_t width,
@@ -4485,7 +4491,7 @@ uint16_t GFX_TextStringWidthGet(GFX_XCHAR *pString, GFX_RESOURCE_HDR *pFont)
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_TextStringWidthRamGet(
+uint16_t WEAK GFX_TextStringWidthRamGet(
                                 GFX_XCHAR* pString,
                                 GFX_RESOURCE_HDR* pFont)
 {
@@ -4552,7 +4558,7 @@ uint16_t __attribute__((weak)) GFX_TextStringWidthRamGet(
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_TextStringWidthFlashGet(
+uint16_t WEAK GFX_TextStringWidthFlashGet(
                                 GFX_XCHAR* pString,
                                 GFX_RESOURCE_HDR *pFont)
 {
@@ -4618,7 +4624,7 @@ uint16_t __attribute__((weak)) GFX_TextStringWidthFlashGet(
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_TextStringWidthExternalGet(
+uint16_t WEAK GFX_TextStringWidthExternalGet(
                                 GFX_XCHAR* pString,
                                 GFX_RESOURCE_HDR* pFont)
 {
@@ -4697,7 +4703,7 @@ uint16_t __attribute__((weak)) GFX_TextStringWidthExternalGet(
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_DRV_TextStringWidthGet(GFX_XCHAR* textString, GFX_RESOURCE_HDR* pFont)
+uint16_t WEAK GFX_DRV_TextStringWidthGet(GFX_XCHAR* textString, GFX_RESOURCE_HDR* pFont)
 {
     return 0;
 }
@@ -4720,7 +4726,7 @@ uint16_t __attribute__((weak)) GFX_DRV_TextStringWidthGet(GFX_XCHAR* textString,
 
 */
 // *****************************************************************************
-void __attribute__((weak)) GFX_ImageFlash1BPPDraw(
+void WEAK GFX_ImageFlash1BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -4867,7 +4873,7 @@ void __attribute__((weak)) GFX_ImageFlash1BPPDraw(
 */
 // *****************************************************************************
 #if (GFX_CONFIG_COLOR_DEPTH >= 4)
-void __attribute__((weak)) GFX_ImageFlash4BPPDraw(
+void WEAK GFX_ImageFlash4BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -5015,7 +5021,7 @@ void __attribute__((weak)) GFX_ImageFlash4BPPDraw(
 */
 // *****************************************************************************
 #if (GFX_CONFIG_COLOR_DEPTH >= 8)
-void __attribute__((weak)) GFX_ImageFlash8BPPDraw(
+void WEAK GFX_ImageFlash8BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -5118,7 +5124,7 @@ void __attribute__((weak)) GFX_ImageFlash8BPPDraw(
 */
 // *****************************************************************************
 #if (GFX_CONFIG_COLOR_DEPTH == 16)
-void __attribute__((weak)) GFX_ImageFlash16BPPDraw(
+void WEAK GFX_ImageFlash16BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -5202,7 +5208,7 @@ void __attribute__((weak)) GFX_ImageFlash16BPPDraw(
 
 */
 // *****************************************************************************
-void __attribute__((weak)) GFX_ImageExternal1BPPDraw(
+void WEAK GFX_ImageExternal1BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -5382,7 +5388,7 @@ void __attribute__((weak)) GFX_ImageExternal1BPPDraw(
 */
 // *****************************************************************************
 #if (GFX_CONFIG_COLOR_DEPTH >= 4)
-void __attribute__((weak)) GFX_ImageExternal4BPPDraw(
+void WEAK GFX_ImageExternal4BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -5562,7 +5568,7 @@ void __attribute__((weak)) GFX_ImageExternal4BPPDraw(
 
 */
 // *****************************************************************************
-void __attribute__((weak)) GFX_ImageExternal8BPPDraw(
+void WEAK GFX_ImageExternal8BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -5705,7 +5711,7 @@ void __attribute__((weak)) GFX_ImageExternal8BPPDraw(
 */
 // *****************************************************************************
 #if (GFX_CONFIG_COLOR_DEPTH == 16)
-void __attribute__((weak)) GFX_ImageExternal16BPPDraw(
+void WEAK GFX_ImageExternal16BPPDraw(
                                 uint16_t left,
                                 uint16_t top,
                                 GFX_RESOURCE_HDR *pImage,
@@ -7899,7 +7905,7 @@ uint16_t GFX_ImageFlashExternal4BPPDecode(
 
 */
 // *****************************************************************************
-void __attribute__((weak)) GFX_DRV_DoubleBufferDisable(void)
+void WEAK GFX_DRV_DoubleBufferDisable(void)
 { }
 
 // *****************************************************************************
@@ -7924,7 +7930,7 @@ void __attribute__((weak)) GFX_DRV_DoubleBufferDisable(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_DrawBufferInitialize(
+GFX_STATUS WEAK GFX_DrawBufferInitialize(
                                 uint16_t index,
                                 uint32_t address)
 {
@@ -7946,7 +7952,7 @@ GFX_STATUS __attribute__((weak)) GFX_DrawBufferInitialize(
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_DrawBufferSet(uint16_t index)
+GFX_STATUS WEAK GFX_DrawBufferSet(uint16_t index)
 {
     return (GFX_STATUS_SUCCESS);
 }
@@ -7966,7 +7972,7 @@ GFX_STATUS __attribute__((weak)) GFX_DrawBufferSet(uint16_t index)
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_DrawBufferGet(void)
+uint16_t WEAK GFX_DrawBufferGet(void)
 {
     return (0);
 }
@@ -7987,7 +7993,7 @@ uint16_t __attribute__((weak)) GFX_DrawBufferGet(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_FrameBufferSet(uint16_t index)
+GFX_STATUS WEAK GFX_FrameBufferSet(uint16_t index)
 {
     return (GFX_STATUS_SUCCESS);
 }
@@ -8007,7 +8013,7 @@ GFX_STATUS __attribute__((weak)) GFX_FrameBufferSet(uint16_t index)
 
 */
 // *****************************************************************************
-uint16_t __attribute__((weak)) GFX_FrameBufferGet(void)
+uint16_t WEAK GFX_FrameBufferGet(void)
 {
     return (0);
 }
@@ -8034,7 +8040,7 @@ uint16_t __attribute__((weak)) GFX_FrameBufferGet(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__ ((weak)) GFX_DoubleBufferEnable(void)
+GFX_STATUS WEAK GFX_DoubleBufferEnable(void)
 {
     if (GFX_DoubleBufferStatusGet() == GFX_FEATURE_DISABLED)
     {
@@ -8128,7 +8134,7 @@ inline GFX_FEATURE_STATUS __attribute__ ((always_inline)) GFX_DoubleBufferStatus
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__ ((weak)) GFX_DoubleBufferSynchronize(void)
+GFX_STATUS WEAK GFX_DoubleBufferSynchronize(void)
 {
     // synchronization will be performed immediately.
     return (GFX_STATUS_SUCCESS);
@@ -8149,7 +8155,7 @@ GFX_STATUS __attribute__ ((weak)) GFX_DoubleBufferSynchronize(void)
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__ ((weak)) GFX_DoubleBufferSynchronizeRequest(void)
+GFX_STATUS WEAK GFX_DoubleBufferSynchronizeRequest(void)
 {
     GFX_STATUS status = GFX_STATUS_SUCCESS;
 
@@ -8340,7 +8346,7 @@ inline GFX_FEATURE_STATUS __attribute__ ((always_inline)) GFX_DoubleBufferSyncAl
 
 */
 // *****************************************************************************
-void __attribute__ ((weak)) GFX_DoubleBufferAreaMark(
+void WEAK GFX_DoubleBufferAreaMark(
                                 uint16_t left,
                                 uint16_t top,
                                 uint16_t right,
@@ -8393,7 +8399,7 @@ void __attribute__ ((weak)) GFX_DoubleBufferAreaMark(
 
 */
 // *****************************************************************************
-GFX_RECTANGULAR_AREA __attribute__ ((weak)) *GFX_DoubleBufferAreaGet(
+GFX_RECTANGULAR_AREA WEAK *GFX_DoubleBufferAreaGet(
                                 uint16_t count)
 {
     return (&(gfxDoubleBufferParam.gfxDoubleBufferAreas[count]));
@@ -8712,7 +8718,7 @@ inline uint16_t __attribute__ ((always_inline)) GFX_RenderToDisplayBufferDisable
 
 */
 // *****************************************************************************
-GFX_STATUS __attribute__((weak)) GFX_ThickBevelDraw(
+GFX_STATUS WEAK GFX_ThickBevelDraw(
                                         uint16_t xL, 
                                         uint16_t yT, 
                                         uint16_t xR, 

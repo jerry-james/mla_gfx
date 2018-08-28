@@ -165,7 +165,7 @@ void GFX_Initialize(void);
 
 */
 // *****************************************************************************
-extern inline void GFX_Primitive_Initialize(void);
+static inline void GFX_Primitive_Initialize(void);
 // DOM-IGNORE-END
 
 // *****************************************************************************
@@ -1445,7 +1445,7 @@ GFX_STATUS GFX_TextStringBoxDraw(
 
 */
 // *****************************************************************************
-extern inline uint16_t __attribute__ ((always_inline)) GFX_TextStringHeightGet(
+static inline uint16_t __attribute__ ((always_inline)) GFX_TextStringHeightGet(
                                 GFX_RESOURCE_HDR *pFont)
 {
     return (pFont->resource.font.header.height);
@@ -3302,7 +3302,7 @@ GFX_STATUS GFX_ImageDraw(       uint16_t left,
 
 */
 // *****************************************************************************
-extern inline int16_t __attribute__ ((always_inline)) GFX_ImageWidthGet(
+static inline int16_t __attribute__ ((always_inline)) GFX_ImageWidthGet(
                                 GFX_RESOURCE_HDR *pImage)
 {
     return pImage->resource.image.width;
@@ -3341,7 +3341,7 @@ extern inline int16_t __attribute__ ((always_inline)) GFX_ImageWidthGet(
 
 */
 // *****************************************************************************
-extern inline int16_t __attribute__ ((always_inline)) GFX_ImageHeightGet(
+static inline int16_t __attribute__ ((always_inline)) GFX_ImageHeightGet(
                                 GFX_RESOURCE_HDR *pImage)
 {
     return pImage->resource.image.height;
@@ -3380,7 +3380,7 @@ extern inline int16_t __attribute__ ((always_inline)) GFX_ImageHeightGet(
 
 */
 // *****************************************************************************
-extern inline void __attribute__ ((always_inline)) GFX_ImageHeaderGet(
+static inline void __attribute__ ((always_inline)) GFX_ImageHeaderGet(
                                 GFX_RESOURCE_HDR *pImage,
                                 GFX_MCHP_BITMAP_HEADER *pBitmapHdr)
 {

@@ -718,9 +718,9 @@ typedef struct
     #define GFX_RGBConvert(red, green, blue)    (GFX_COLOR) (((GFX_COLOR)(red) << 16) | ((GFX_COLOR)(green) << 8) | (GFX_COLOR)(blue))
 #endif
 
-   #define ConvertColor50(color)  (GFX_COLOR)((color & (0x00FEFEFEul))>>1)
-   #define ConvertColor25(color)  (GFX_COLOR)((color & (0x00FCFCFCul))>>2)
-   #define ConvertColor75(color)  (GFX_COLOR)(ConvertColor50(color) + ConvertColor25(color))
+   #define GFX_Color50Convert(color)  (GFX_COLOR)((color & (0x00FEFEFEul))>>1)
+   #define GFX_Color25Convert(color)  (GFX_COLOR)((color & (0x00FCFCFCul))>>2)
+   #define GFX_Color75Convert(color)  (GFX_COLOR)(GFX_Color50Convert(color) + GFX_Color25Convert(color))
 
 #elif (GFX_CONFIG_COLOR_DEPTH == 8)
 #ifndef GFX_RGBConvert
