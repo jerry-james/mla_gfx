@@ -49,14 +49,7 @@ please contact mla_licensing@microchip.com
 #include <stdint.h>
 #include "gfx_config.h"
 
-#if defined (__PIC32MX__) || defined (__PIC32MZ__)
-typedef const uint8_t                   uint8_gfx_image_prog;
-typedef const int8_t                    int8_gfx_image_prog;
-typedef const uint16_t                  uint16_gfx_image_prog;
-typedef const int16_t                   int16_gfx_image_prog;
-typedef const uint32_t                  uint32_gfx_image_prog;
-typedef const int32_t                   int32_gfx_image_prog;
-#else
+#if defined (__XC16__)
 // General program space data types
 typedef __prog__ uint8_t                uint8_prog;
 typedef __prog__ int8_t                 int8_prog;
@@ -90,6 +83,14 @@ typedef int16_prog_pack                 int16_gfx_image_prog;
 typedef uint32_prog_pack                uint32_gfx_image_prog;
 typedef int32_prog_pack                 int32_gfx_image_prog;
 #endif
+
+#else
+typedef const uint8_t                   uint8_gfx_image_prog;
+typedef const int8_t                    int8_gfx_image_prog;
+typedef const uint16_t                  uint16_gfx_image_prog;
+typedef const int16_t                   int16_gfx_image_prog;
+typedef const uint32_t                  uint32_gfx_image_prog;
+typedef const int32_t                   int32_gfx_image_prog;
 
 #endif
 
