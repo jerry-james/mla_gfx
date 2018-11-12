@@ -8,6 +8,8 @@
 #define DISP_HOR_RESOLUTION 320
 #define DISP_VER_RESOLUTION 240
 
+#define GFX_EXTERNAL_FONT_RASTER_BUFFER_SIZE 14
+
 #include "gfx_config.h"
 #endif /* SYSTEM_CONFIG_H */
 

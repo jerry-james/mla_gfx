@@ -26,6 +26,8 @@ please contact mla_licensing@microchip.com
 #include "gfx/gfx_primitive.h"
 #include <unistd.h>
 
+#include "test_font_1.h"
+
 struct TEST_SCREEN{
     uint16_t width;
     uint16_t height;
@@ -427,8 +429,75 @@ static bool LineStyleSetDiagonal(void)
 
     return VirtualScreen_ValidateScreen(test_name);
 }
+
+static bool TextCharDraw1(void)
+{
+    const char test_name[] = "TextCharDraw1";
+    
+    GFX_ColorSet(GFX_X11_WHITE);
+    GFX_ScreenClear();
+    GFX_ColorSet(GFX_X11_BLACK);
+    
+    GFX_FontSet((GFX_RESOURCE_HDR*)&test_font_1);
+    GFX_TextCursorPositionSet(1, 1);
+    
+    GFX_TextAreaTopSet(0);
+    GFX_TextAreaBottomSet(GFX_MaxYGet());
+    GFX_TextAreaLeftSet(0);
+    GFX_TextAreaRightSet(GFX_MaxXGet());
+                
+    if(GFX_TextCharDraw( '1' ) != GFX_STATUS_SUCCESS) { return false; }
+
+    return VirtualScreen_ValidateScreen(test_name);
+}
+
+static bool TextCharDraw2(void)
+{
+    const char test_name[] = "TextCharDraw2";
+    
+    GFX_ColorSet(GFX_X11_WHITE);
+    GFX_ScreenClear();
+    GFX_ColorSet(GFX_X11_BLACK);
+    
+    GFX_FontSet((GFX_RESOURCE_HDR*)&test_font_1);
+    GFX_TextCursorPositionSet(1, 1);
+    
+    GFX_TextAreaTopSet(0);
+    GFX_TextAreaBottomSet(GFX_MaxYGet());
+    GFX_TextAreaLeftSet(0);
+    GFX_TextAreaRightSet(GFX_MaxXGet());
+                
+    if(GFX_TextCharDraw( '1' ) != GFX_STATUS_SUCCESS) { return false; }
+
+    return VirtualScreen_ValidateScreen(test_name);
+}
+
+GFX_STATUS GFX_ExternalResourceCallback(
+                        GFX_RESOURCE_HDR *pResource,
+                        uint32_t offset,
+                        uint16_t nCount,
+                        void *pBuffer)
+{
+    if(pResource == &test_font_1){
+        FILE *font_file;
+        font_file = fopen("test_font_1.bin", "r");
         
+        if(font_file == NULL){ return GFX_STATUS_FAILURE; }
+        if(fseek(font_file, offset, SEEK_SET) != 0) { return GFX_STATUS_FAILURE; }
+        if(fread(pBuffer, 1, nCount, font_file) != nCount ) { return GFX_STATUS_FAILURE; } 
+       
+        return GFX_STATUS_SUCCESS;
+    }
+    
+    return GFX_STATUS_FAILURE;
+}
+
+/* ===========================================================================*/
+/* End of tests, Start of test framework                                      */
+/* ===========================================================================*/        
 typedef bool (*TEST_FUNCTION)(void);
+
+/* Add test function here for it to be added to the test suite. */
 static TEST_FUNCTION tests[]={
     &ClearScreen,
     &PutPixel,
@@ -438,7 +507,8 @@ static TEST_FUNCTION tests[]={
     &LineStyleSetVertical,
     &LineStyleSetHorizontal,
     &LineStyleSetDiagonal,
-    &GradientFilledRectangle
+    &GradientFilledRectangle,
+    &TextCharDraw1
 };
 
 static const uint32_t test_count = (sizeof(tests)/sizeof(TEST_FUNCTION));

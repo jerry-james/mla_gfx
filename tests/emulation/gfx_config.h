@@ -110,7 +110,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
                                             support.
 *********************************************************************/
 //#define GFX_CONFIG_FONT_FLASH_DISABLE
-#define GFX_CONFIG_FONT_EXTERNAL_DISABLE
+//#define GFX_CONFIG_FONT_EXTERNAL_DISABLE
 #define GFX_CONFIG_FONT_RAM_DISABLE
 
 /*********************************************************************

@@ -23,6 +23,7 @@
       </logicalFolder>
       <itemPath>gfx_config.h</itemPath>
       <itemPath>system_config.h</itemPath>
+      <itemPath>test_font_1.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -37,6 +38,7 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="tests" projectFiles="true">
         <itemPath>primitive_tests.c</itemPath>
+        <itemPath>test_font_1.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -136,6 +138,10 @@
       </item>
       <item path="system_config.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="test_font_1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test_font_1.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="virtual_screen.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="virtual_screen.h" ex="false" tool="3" flavor2="0">
@@ -225,6 +231,10 @@
       <item path="primitive_tests.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="system_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="test_font_1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="test_font_1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="virtual_screen.c" ex="false" tool="0" flavor2="0">
       </item>
