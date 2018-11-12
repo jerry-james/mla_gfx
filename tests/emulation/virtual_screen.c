@@ -23,6 +23,7 @@ please contact mla_licensing@microchip.com
 #include <string.h>
 #include <stdbool.h>
 
+#include "system_config.h"
 #include "gfx/gfx_primitive.h"
 
 #if (GFX_CONFIG_COLOR_DEPTH == 8)

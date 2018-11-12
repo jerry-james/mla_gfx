@@ -166,5 +166,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 *********************************************************************/
 //#define GFX_CONFIG_IPU_DECODE_DISABLE
 
+#define GFX_EXTERNAL_FONT_RASTER_BUFFER_SIZE 14
 
 #endif // _GRAPHICS_CONFIG_H
