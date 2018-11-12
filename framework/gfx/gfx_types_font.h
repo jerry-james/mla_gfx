@@ -48,7 +48,7 @@ please contact mla_licensing@microchip.com
  *****************************************************************************/
 #include <stdint.h>
 #include <stddef.h>
-#include "system_config.h"
+#include "gfx_config.h"
 
 
 // *****************************************************************************

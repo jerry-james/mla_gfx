@@ -39,7 +39,7 @@ please contact mla_licensing@microchip.com
 
 #include <stdint.h>
 #include "gfx_config.h"
-#include "gfx/gfx_primitive.h"
+#include "gfx/gfx_types_macros.h"
 #include "gfx/gfx_types_resource.h"
 #include "gfx/gfx_types_palette.h"
 

@@ -48,7 +48,7 @@ please contact mla_licensing@microchip.com
 * Section: Includes
 *********************************************************************/
 #include <stdint.h>
-#include "system_config.h"
+#include "gfx_config.h"
 
 /*********************************************************************
 * Overview: Basic colors definitions.

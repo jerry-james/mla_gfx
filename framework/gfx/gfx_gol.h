@@ -50,7 +50,7 @@ please contact mla_licensing@microchip.com
  *********************************************************************/
 #include <stdbool.h>
 #include <stdint.h>
-#include "system_config.h"
+#include "gfx_config.h"
 #include "gfx/gfx_primitive.h"
 #include "driver/gfx/drv_gfx_display.h"
 #include "gfx/gfx_colors.h"

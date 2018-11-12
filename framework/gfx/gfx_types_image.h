@@ -47,7 +47,7 @@ please contact mla_licensing@microchip.com
  * SECTION: Includes
  *****************************************************************************/
 #include <stdint.h>
-#include "system_config.h"
+#include "gfx_config.h"
 
 #if defined (__PIC32MX__) || defined (__PIC32MZ__)
 typedef const uint8_t                   uint8_gfx_image_prog;

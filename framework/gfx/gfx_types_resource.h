@@ -48,7 +48,6 @@ please contact mla_licensing@microchip.com
  * SECTION: Includes
  *****************************************************************************/
 #include <stdint.h>
-#include "system_config.h"
 #include "gfx/gfx_types_palette.h"
 #include "gfx/gfx_types_font.h"
 #include "gfx/gfx_types_image.h"

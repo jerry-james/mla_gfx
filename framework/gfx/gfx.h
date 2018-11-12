@@ -51,7 +51,6 @@ please contact mla_licensing@microchip.com
 #define GFX_RESOURCE_FORMAT_VERSION 0x0101
 
 ////////////////////////////// INCLUDES //////////////////////////////
-#include "system_config.h"
 #include "gfx/gfx_types_macros.h"           
 #include "driver/gfx/drv_gfx_display.h"
 #include "gfx/gfx_primitive.h"

@@ -42,9 +42,6 @@ please contact mla_licensing@microchip.com
 // DOM-IGNORE-END
 
 #include <stdint.h>
-#include "gfx/gfx_types_palette.h"
-#include "gfx/gfx_types_font.h"
-#include "gfx/gfx_types_image.h"
 #include "gfx/gfx_types_resource.h"
 
 // DOM-IGNORE-BEGIN

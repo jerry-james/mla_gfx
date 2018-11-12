@@ -44,7 +44,6 @@ please contact mla_licensing@microchip.com
 // DOM-IGNORE-END
 
 #include <stdint.h>
-#include "system_config.h" 
 #include "gfx/gfx_types_macros.h"
 #include "gfx/gfx_primitive_local.h"
 #ifndef GFX_CONFIG_PALETTE_DISABLE
@@ -165,7 +164,7 @@ void GFX_Initialize(void);
 
 */
 // *****************************************************************************
-static inline void GFX_Primitive_Initialize(void);
+void GFX_Primitive_Initialize(void);
 // DOM-IGNORE-END
 
 // *****************************************************************************
