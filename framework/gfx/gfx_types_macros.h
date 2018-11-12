@@ -360,6 +360,9 @@ typedef enum
     // Rendering has been performed.
     GFX_STATUS_SUCCESS      /*DOM-IGNORE-BEGIN*/ = 0x0001
                             /*DOM-IGNORE-END*/, 
+    // Error in the rendering request
+    GFX_STATUS_ERROR        /*DOM-IGNORE-BEGIN*/ = 0x0002
+                            /*DOM-IGNORE-END*/, 
 } GFX_STATUS;
 
 // *****************************************************************************

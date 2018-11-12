@@ -3856,12 +3856,6 @@ GFX_STATUS WEAK GFX_TextCharDraw(
             case TC_IDLE:
 
                 statusBit = GFX_STATUS_SUCCESS_BIT;
-                // check for error conditions
-                // since we cannot predict that the font table is always valid we
-                // cannot allow the program to hang. So intead of returning
-                // GFX_STATUS_FAILURE we will return a GFX_STATUS_SUCCESS.
-                // When the character is not in the table, it will just be
-                // ignored and not printed.
                 pFont = GFX_FontGet();
 
                 // check if new line character, if yes just go and adjust
@@ -3882,7 +3876,7 @@ GFX_STATUS WEAK GFX_TextCharDraw(
                     statusBit = GFX_STATUS_ERROR_BIT;
 #endif
                 if (statusBit == GFX_STATUS_ERROR_BIT)
-                    return GFX_STATUS_SUCCESS;
+                    return GFX_STATUS_ERROR;
                 else
                     state = TC_GET_INFO;
 

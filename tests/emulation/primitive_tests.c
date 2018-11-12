@@ -467,7 +467,8 @@ static bool TextCharDraw2(void)
     GFX_TextAreaLeftSet(0);
     GFX_TextAreaRightSet(GFX_MaxXGet());
                 
-    if(GFX_TextCharDraw( '1' ) != GFX_STATUS_SUCCESS) { return false; }
+    /* '~' should be an out of bounds character. */
+    if(GFX_TextCharDraw( '~' ) != GFX_STATUS_ERROR) { return false; }
 
     return VirtualScreen_ValidateScreen(test_name);
 }
@@ -508,7 +509,8 @@ static TEST_FUNCTION tests[]={
     &LineStyleSetHorizontal,
     &LineStyleSetDiagonal,
     &GradientFilledRectangle,
-    &TextCharDraw1
+    &TextCharDraw1,
+    &TextCharDraw2
 };
 
 static const uint32_t test_count = (sizeof(tests)/sizeof(TEST_FUNCTION));
