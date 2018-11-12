@@ -473,6 +473,47 @@ static bool TextCharDraw2(void)
     return VirtualScreen_ValidateScreen(test_name);
 }
 
+static bool RectangleRoundFillDraw1(void)
+{
+    const char test_name[] = "RectangleRoundFillDraw1";
+    
+    GFX_ColorSet(GFX_X11_WHITE);
+    GFX_ScreenClear();
+    
+    GFX_FillStyleSet(GFX_FILL_STYLE_GRADIENT_DOWN);
+    GFX_GradientColorSet(GFX_X11_RED, GFX_X11_BLUE);
+    GFX_RectangleRoundFillDraw(     0, //left
+                                    0, //top
+                                    GFX_MaxXGet(), //right
+                                    GFX_MaxYGet(), //bottom
+                                    0 //radius
+                              ); 
+
+    return VirtualScreen_ValidateScreen(test_name);
+}
+
+
+static bool RectangleRoundFillDraw2(void)
+{
+    const char test_name[] = "RectangleRoundFillDraw2";
+    uint16_t radius = (GFX_MaxXGet() > GFX_MaxYGet()) ? (GFX_MaxYGet()/8) : (GFX_MaxXGet()/8);  //radius - 1/8 of the smaller side of the screen.
+    
+    GFX_ColorSet(GFX_X11_WHITE);
+    GFX_ScreenClear();
+    
+    GFX_FillStyleSet(GFX_FILL_STYLE_GRADIENT_RIGHT);
+    GFX_GradientColorSet(GFX_X11_RED, GFX_X11_BLUE);
+    GFX_RectangleRoundFillDraw(     0 + radius, //left
+                                    0 + radius, //top
+                                    GFX_MaxXGet() - radius, //right
+                                    GFX_MaxYGet() - radius, //bottom
+                                    radius
+                              ); 
+
+    return VirtualScreen_ValidateScreen(test_name);
+}
+
+
 GFX_STATUS GFX_ExternalResourceCallback(
                         GFX_RESOURCE_HDR *pResource,
                         uint32_t offset,
@@ -510,7 +551,9 @@ static TEST_FUNCTION tests[]={
     &LineStyleSetDiagonal,
     &GradientFilledRectangle,
     &TextCharDraw1,
-    &TextCharDraw2
+    &TextCharDraw2,
+    &RectangleRoundFillDraw1,
+    &RectangleRoundFillDraw2
 };
 
 static const uint32_t test_count = (sizeof(tests)/sizeof(TEST_FUNCTION));
