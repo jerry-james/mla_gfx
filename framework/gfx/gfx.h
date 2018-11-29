@@ -45,7 +45,7 @@ please contact mla_licensing@microchip.com
 
 /////////////////////// GRAPHICS_LIBRARY_VERSION /////////////////////
 // MSB is version, LSB is subversion
-#define GRAPHICS_LIBRARY_VERSION    0x0460
+#define GRAPHICS_LIBRARY_VERSION    0x0490
 
 ////////////// GRAPHICS_LIBRARY_RESOURCE_FORMAT_VERSION //////////////
 #define GFX_RESOURCE_FORMAT_VERSION 0x0101
