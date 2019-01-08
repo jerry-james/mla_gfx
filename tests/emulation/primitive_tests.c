@@ -514,20 +514,25 @@ static bool RectangleRoundFillDraw2(void)
     return VirtualScreen_ValidateScreen(test_name);
 }
 
+
 GFX_STATUS GFX_ExternalResourceCallback( GFX_RESOURCE_HDR *pResource, uint32_t offset, uint16_t nCount, void *pBuffer)
 {
-    if(pResource == &test_font_1){
-        FILE *font_file;
-        font_file = fopen("test_font_1.bin", "r");
+    FILE *resource_file;
         
-        if(font_file == NULL){ return GFX_STATUS_FAILURE; }
-        if(fseek(font_file, offset, SEEK_SET) != 0) { return GFX_STATUS_FAILURE; }
-        if(fread(pBuffer, 1, nCount, font_file) != nCount ) { return GFX_STATUS_FAILURE; } 
-       
-        return GFX_STATUS_SUCCESS;
+    if(pResource == &test_font_1)
+    {
+        resource_file = fopen("test_font_1.bin", "r");
     }
-    
-    return GFX_STATUS_FAILURE;
+    else
+    {
+        return GFX_STATUS_FAILURE;
+    }
+     
+    if(resource_file == NULL){ return GFX_STATUS_FAILURE; }
+    if(fseek(resource_file, offset, SEEK_SET) != 0) { return GFX_STATUS_FAILURE; }
+    if(fread(pBuffer, 1, nCount, resource_file) != nCount ) { return GFX_STATUS_FAILURE; } 
+
+    return GFX_STATUS_SUCCESS;
 }
 
 /* ===========================================================================*/
