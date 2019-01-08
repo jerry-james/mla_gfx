@@ -136,6 +136,9 @@ void VirtualScreen_Dump(const char* filename)
     FILE *fp;
       
     fp = fopen(filename, "w+");
+    
+    if(fp == NULL) { printf("DUMP FAILED: Unable to open file (%s) for writing.  Check that folder is not read only.\r\n", filename); return;}
+    
     fwrite(&file_header, 1, sizeof(file_header), fp);
     fwrite(&bitmap_core_header, 1, sizeof(bitmap_core_header), fp);
    
