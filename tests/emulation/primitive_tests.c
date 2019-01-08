@@ -40,6 +40,10 @@ static struct TEST_SCREEN screens[] = {
 
 static struct TEST_SCREEN *screen = NULL;
 
+/*******************************************************************************
+ * Tests 
+ ******************************************************************************/
+
 static bool ClearScreen(void)
 {    
     const char test_name[] = "ClearScreen";
@@ -93,8 +97,6 @@ static bool GradientFilledRectangle(void)
     
     return VirtualScreen_ValidateScreen(test_name);
 }
-
-
 
 static bool Colors(void)
 {
@@ -492,7 +494,6 @@ static bool RectangleRoundFillDraw1(void)
     return VirtualScreen_ValidateScreen(test_name);
 }
 
-
 static bool RectangleRoundFillDraw2(void)
 {
     const char test_name[] = "RectangleRoundFillDraw2";
@@ -513,12 +514,7 @@ static bool RectangleRoundFillDraw2(void)
     return VirtualScreen_ValidateScreen(test_name);
 }
 
-
-GFX_STATUS GFX_ExternalResourceCallback(
-                        GFX_RESOURCE_HDR *pResource,
-                        uint32_t offset,
-                        uint16_t nCount,
-                        void *pBuffer)
+GFX_STATUS GFX_ExternalResourceCallback( GFX_RESOURCE_HDR *pResource, uint32_t offset, uint16_t nCount, void *pBuffer)
 {
     if(pResource == &test_font_1){
         FILE *font_file;
@@ -560,14 +556,21 @@ static const uint32_t test_count = (sizeof(tests)/sizeof(TEST_FUNCTION));
 
 static int RunTests(struct TEST_SCREEN *screen){
     int test_index;
-    uint32_t passed;
+    uint32_t passed_count;
+    bool test_passed;
            
-    passed = 0;
+    passed_count = 0;
     for(test_index=0; test_index < test_count; test_index++){
-        passed += tests[test_index]();
+        test_passed = tests[test_index]();
+        
+        if(test_passed == true){
+            passed_count++;
+        } else {
+            printf("TEST FAILED(%i)\r\n", test_index);
+        }
     }
     
-    return passed;
+    return passed_count;
 }
 
 void RunPrimitiveTests(void)
@@ -577,6 +580,7 @@ void RunPrimitiveTests(void)
     
     for(i=0;i<sizeof(screens)/sizeof(struct TEST_SCREEN); i++){
         passed = RunTests(&screens[i]);
+
         printf( "Primitive tests, screen(%i,%i): run: %i, passed: %i, failed: %i\r\n", screens[i].width, screens[i].height, test_count, passed, test_count-passed);
     }
 }

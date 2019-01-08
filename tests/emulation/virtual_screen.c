@@ -164,8 +164,8 @@ bool VirtualScreen_ValidateScreen(const char* test_name)
     results_file = fopen(results_filename, "r");
     expected_file = fopen(expected_filename, "r");
 
-    if(results_file == NULL){ return false; }
-    if(expected_file == NULL){ return false; }
+    if(results_file == NULL){ printf("VALIDATION FAILED(%s): unable to create results file\r\n", test_name); return false; }
+    if(expected_file == NULL){ printf("VALIDATION FAILED(%s): unable to open expected results file\r\n", test_name); return false; }
         
     while(!feof(results_file)){
         if(fgetc(results_file) != fgetc(expected_file)){
