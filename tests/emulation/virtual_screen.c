@@ -50,7 +50,8 @@ static char* name = NULL;
 
 static const uint8_t bytes_per_pixel = GFX_CONFIG_COLOR_DEPTH/8;
 
-struct __attribute__((packed)) BMP_FILE_HEADER{
+#define BMP_FILE_HEADER_SIZE 14
+struct BMP_FILE_HEADER{
     uint16_t id;
     uint32_t size;
     uint16_t reserved0;
@@ -58,7 +59,8 @@ struct __attribute__((packed)) BMP_FILE_HEADER{
     uint32_t image_data_offset;
 };
 
-struct __attribute__((packed)) BITMAPINFOHEADER{
+#define BITMAPINFOHEADER_SIZE 40
+struct BITMAPINFOHEADER{
     uint32_t header_size;
     uint32_t width;
     uint32_t height;
@@ -72,7 +74,8 @@ struct __attribute__((packed)) BITMAPINFOHEADER{
     uint32_t important_colors;
 };
 
-struct __attribute__((packed)) BITMAPV4HEADER{
+#define BITMAPV4HEADER_SIZE 108
+struct BITMAPV4HEADER{
     uint32_t header_size;
     uint32_t width;
     uint32_t height;
@@ -97,6 +100,54 @@ struct __attribute__((packed)) BITMAPV4HEADER{
 
 static int bytesNeededTo32bitAlignRow(void){
     return (4-((bytes_per_pixel*width)%4))%4;
+}
+
+static void PrintFileHeader(const struct BMP_FILE_HEADER *file_header, FILE* file)
+{
+    fwrite(&file_header->id, 1, sizeof(file_header->id), file);
+    fwrite(&file_header->size, 1, sizeof(file_header->size), file);
+    fwrite(&file_header->reserved0, 1, sizeof(file_header->reserved0), file);
+    fwrite(&file_header->reserved1, 1, sizeof(file_header->reserved1), file);
+    fwrite(&file_header->image_data_offset, 1, sizeof(file_header->image_data_offset), file);
+}
+
+static void PrintBitmapInfoHeader(const struct BITMAPINFOHEADER *bitmap_info_header, FILE* file)
+{
+    fwrite(&bitmap_info_header->header_size, 1, sizeof(bitmap_info_header->header_size), file);
+    fwrite(&bitmap_info_header->width, 1, sizeof(bitmap_info_header->width), file);
+    fwrite(&bitmap_info_header->height, 1, sizeof(bitmap_info_header->height), file);
+    fwrite(&bitmap_info_header->color_planes, 1, sizeof(bitmap_info_header->color_planes), file);
+    fwrite(&bitmap_info_header->bits_per_pixel, 1, sizeof(bitmap_info_header->bits_per_pixel), file);
+    fwrite(&bitmap_info_header->compression_method, 1, sizeof(bitmap_info_header->compression_method), file);
+    fwrite(&bitmap_info_header->image_size, 1, sizeof(bitmap_info_header->image_size), file);
+    fwrite(&bitmap_info_header->horizontal_resolution, 1, sizeof(bitmap_info_header->horizontal_resolution), file);
+    fwrite(&bitmap_info_header->vertical_resolution, 1, sizeof(bitmap_info_header->vertical_resolution), file);
+    fwrite(&bitmap_info_header->colors_in_pallet, 1, sizeof(bitmap_info_header->colors_in_pallet), file);
+    fwrite(&bitmap_info_header->important_colors, 1, sizeof(bitmap_info_header->important_colors), file);
+}
+
+static void PrintBitmapV4Header(const struct BITMAPV4HEADER *bitmap_v4_header, FILE* file)
+{
+    fwrite(&bitmap_v4_header->header_size, 1, sizeof(bitmap_v4_header->header_size), file);
+    fwrite(&bitmap_v4_header->width, 1, sizeof(bitmap_v4_header->width), file);
+    fwrite(&bitmap_v4_header->height, 1, sizeof(bitmap_v4_header->height), file);
+    fwrite(&bitmap_v4_header->color_planes, 1, sizeof(bitmap_v4_header->color_planes), file);
+    fwrite(&bitmap_v4_header->bits_per_pixel, 1, sizeof(bitmap_v4_header->bits_per_pixel), file);
+    fwrite(&bitmap_v4_header->compression_method, 1, sizeof(bitmap_v4_header->compression_method), file);
+    fwrite(&bitmap_v4_header->image_size, 1, sizeof(bitmap_v4_header->image_size), file);
+    fwrite(&bitmap_v4_header->horizontal_resolution, 1, sizeof(bitmap_v4_header->horizontal_resolution), file);
+    fwrite(&bitmap_v4_header->vertical_resolution, 1, sizeof(bitmap_v4_header->vertical_resolution), file);
+    fwrite(&bitmap_v4_header->colors_in_pallet, 1, sizeof(bitmap_v4_header->colors_in_pallet), file);
+    fwrite(&bitmap_v4_header->important_colors, 1, sizeof(bitmap_v4_header->important_colors), file);
+    fwrite(&bitmap_v4_header->red_mask, 1, sizeof(bitmap_v4_header->red_mask), file);
+    fwrite(&bitmap_v4_header->green_mask, 1, sizeof(bitmap_v4_header->green_mask), file);
+    fwrite(&bitmap_v4_header->blue_mask, 1, sizeof(bitmap_v4_header->blue_mask), file);
+    fwrite(&bitmap_v4_header->alpha_mask, 1, sizeof(bitmap_v4_header->alpha_mask), file);
+    fwrite(&bitmap_v4_header->cs_type, 1, sizeof(bitmap_v4_header->cs_type), file);
+    fwrite(&bitmap_v4_header->endpoints, 1, sizeof(bitmap_v4_header->endpoints), file);
+    fwrite(&bitmap_v4_header->red_gamma, 1, sizeof(bitmap_v4_header->red_gamma), file);
+    fwrite(&bitmap_v4_header->green_gamma, 1, sizeof(bitmap_v4_header->green_gamma), file);
+    fwrite(&bitmap_v4_header->blue_gamma, 1, sizeof(bitmap_v4_header->blue_gamma), file);
 }
 
 void VirtualScreen_Dump(const char* filename)
@@ -125,31 +176,31 @@ void VirtualScreen_Dump(const char* filename)
     
     const struct BMP_FILE_HEADER file_header = {
         .id = 0x4D42, 
-        .size = sizeof(struct BITMAPV4HEADER)+pixel_data_size, 
-        .image_data_offset = sizeof(struct BITMAPV4HEADER) + sizeof(struct BMP_FILE_HEADER),
+        .size = BITMAPV4HEADER_SIZE+pixel_data_size, 
+        .image_data_offset = BITMAPV4HEADER_SIZE + BMP_FILE_HEADER_SIZE,
         .reserved0 = 0,
         .reserved1 = 0
     };
     
     const uint32_t padding = 0x00000000;
     
-    FILE *fp;
+    FILE *file;
       
-    fp = fopen(filename, "w+");
+    file = fopen(filename, "w+");
     
-    if(fp == NULL) { printf("DUMP FAILED: Unable to open file (%s) for writing.  Check that folder is not read only.\r\n", filename); return;}
+    if(file == NULL) { printf("DUMP FAILED: Unable to open file (%s) for writing.  Check that folder is not read only.\r\n", filename); return;}
     
-    fwrite(&file_header, 1, sizeof(file_header), fp);
-    fwrite(&bitmap_core_header, 1, sizeof(bitmap_core_header), fp);
+    PrintFileHeader(&file_header, file);
+    PrintBitmapV4Header(&bitmap_core_header, file);
    
     for(y=height-1; y>=0; y--){
         for(x=0; x<width; x++){
             pixel = screen_data[x][y];
-            fwrite(&pixel, 1, bytes_per_pixel, fp);
+            fwrite(&pixel, 1, bytes_per_pixel, file);
         }
-        fwrite(&padding, 1, bytesNeededTo32bitAlignRow(), fp);
+        fwrite(&padding, 1, bytesNeededTo32bitAlignRow(), file);
     }
-    fclose(fp);
+    fclose(file);
 }
 
 bool VirtualScreen_ValidateScreen(const char* test_name)
