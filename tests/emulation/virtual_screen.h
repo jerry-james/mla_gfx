@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 bool VirtualScreen_ValidateScreen(const char* test_name);
+void VirtualScreen_Dump(const char* filename);
 
 #endif /* VIRTUAL_SCREEN_H */
 

@@ -22,6 +22,7 @@ please contact mla_licensing@microchip.com
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <errno.h>
 
 #include "system_config.h"
 #include "gfx/gfx_primitive.h"
@@ -187,7 +188,10 @@ void VirtualScreen_Dump(const char* filename)
     FILE *file;
       
     file = fopen(filename, "w+");
-    
+    if(errno == EMFILE) {
+        printf("Ya'll got too many files open.");
+        return;
+    }
     if(file == NULL) { printf("DUMP FAILED: Unable to open file (%s) for writing.  Check that folder is not read only.\r\n", filename); return;}
     
     PrintFileHeader(&file_header, file);

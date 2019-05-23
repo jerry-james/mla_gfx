@@ -1,0 +1,32 @@
+//
+// Created by C14648 on 5/13/2019.
+//
+
+#include <stdlib.h>
+#include "test_function.h"
+#include "header.h"
+
+char* generateString() {
+    char* chars = malloc(sizeof(char) * 256);
+
+    for (int i = 32; i < 256; i++) {
+        chars[i - 32] = i;
+    }
+    chars[255] = 0;
+    return chars;
+}
+
+<#list fonts as font>
+static bool ${font.resource}_test(void) {
+    return renderString("${font.resource}", generateString(), &${font.resource}) ;
+}
+</#list>
+
+
+TEST_FUNCTION tests[] = {
+<#list fonts as font>
+    &${font.resource}_test,
+</#list>  
+};
+
+const uint32_t test_count = (sizeof(tests)/sizeof(TEST_FUNCTION));

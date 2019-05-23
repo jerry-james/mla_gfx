@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><Graphics_Resource_Converter>
+<Configuration>
+<major>4</major>
+<minor>2</minor>
+<compiler>C30/XC16</compiler>
+<format>BIN</format>
+<graphics_module>false</graphics_module>
+<bitmap_padding_type>padding</bitmap_padding_type>
+<graphics_model>16 bpp</graphics_model>
+</Configuration>
+<Fonts>
+<Font_Resource>
+<label>DINv4_26_2BPP</label>
+<name>DIN Next LT Pro Medium</name>
+<size>26</size>
+<height>0</height>
+
+
+
+<anti_aliasing>2 bits per pixel</anti_aliasing>
+<first_character>32</first_character>
+<last_character>255</last_character>
+<character_range>32-255</character_range>
+<font_filter>None</font_filter>
+</Font_Resource>
+</Fonts>
+</Graphics_Resource_Converter>
