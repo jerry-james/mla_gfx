@@ -521,7 +521,7 @@ GFX_STATUS GFX_ExternalResourceCallback( GFX_RESOURCE_HDR *pResource, uint32_t o
         
     if(pResource == &test_font_1)
     {
-        resource_file = fopen("test_font_1.bin", "r");
+        resource_file = fopen("test_font_1.bin", "r+b");
     }
     else
     {

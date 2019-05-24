@@ -186,7 +186,7 @@ void VirtualScreen_Dump(const char* filename)
     
     FILE *file;
       
-    file = fopen(filename, "w+");
+    file = fopen(filename, "w+b");
     
     if(file == NULL) { printf("DUMP FAILED: Unable to open file (%s) for writing.  Check that folder is not read only.\r\n", filename); return;}
     
@@ -215,8 +215,8 @@ bool VirtualScreen_ValidateScreen(const char* test_name)
 
     VirtualScreen_Dump(results_filename);
         
-    results_file = fopen(results_filename, "r");
-    expected_file = fopen(expected_filename, "r");
+    results_file = fopen(results_filename, "r+b");
+    expected_file = fopen(expected_filename, "r+b");
 
     if(results_file == NULL){ printf("VALIDATION FAILED(%s): unable to create results file\r\n", test_name); return false; }
     if(expected_file == NULL){ printf("VALIDATION FAILED(%s): unable to open expected results file\r\n", test_name); return false; }
