@@ -530,7 +530,9 @@ GFX_STATUS GFX_ExternalResourceCallback( GFX_RESOURCE_HDR *pResource, uint32_t o
      
     if(resource_file == NULL){ return GFX_STATUS_FAILURE; }
     if(fseek(resource_file, offset, SEEK_SET) != 0) { return GFX_STATUS_FAILURE; }
-    if(fread(pBuffer, 1, nCount, resource_file) != nCount ) { return GFX_STATUS_FAILURE; } 
+    if(fread(pBuffer, 1, nCount, resource_file) != nCount ) { return GFX_STATUS_FAILURE; }
+
+    fclose(resource_file);
 
     return GFX_STATUS_SUCCESS;
 }
